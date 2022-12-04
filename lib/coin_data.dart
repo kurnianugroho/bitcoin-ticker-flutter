@@ -28,4 +28,24 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {}
+class CoinData {
+  String time;
+  String cryptoName;
+  String currencyName;
+  String rate;
+
+  CoinData({time = '', cryptoName = '', currencyName = '', rate = ''}) {
+    this.time = time;
+    this.cryptoName = cryptoName;
+    this.currencyName = currencyName;
+    this.rate = rate;
+  }
+
+  factory CoinData.fromJson(Map<String, dynamic> json) {
+    return CoinData(
+        time: json['time'],
+        cryptoName: json['asset_id_base'],
+        currencyName: json['asset_id_quote'],
+        rate: json['rate'].toStringAsFixed(3));
+  }
+}
